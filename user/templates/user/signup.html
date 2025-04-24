@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Register page{% endblock %}
+{% block content %}
+<h2>Register page</h2>
+<form method="post" class="auth-form">
+    {% csrf_token %}
+
+    <div>
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.username.errors %}
+            <div class="form-error">{{ form.username.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.email.errors %}
+            <div class="form-error">{{ form.email.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+            <div class="form-error">{{ form.password1.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+            <div class="form-error">{{ form.password2.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <button type="submit">Sign up</button>
+</form>
+
+<p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #aaa;">
+    Already have an account? <a href="/login/">Log in here</a>.
+</p>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2 style="color:#00f7ff;">👤 Profile</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div style="margin: 1rem 0; padding: 10px; border: 1px solid green; color: lightgreen;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" class="form-profile">
+    {% csrf_token %}
+    <div style="margin-bottom: 1rem;">
+        <label>Username:</label>
+        {{ form.username }}
+    </div>
+    <div style="margin-bottom: 1rem;">
+        <label>Email:</label>
+        {{ form.email }}
+    </div>
+    <button type="submit" class="btn-profile">Update Profile</button>
+</form>
+
+<p style="margin-top: 2rem; max-width: 600px;">Date joined: <strong>{{ user_obj.date_joined }}</strong></p>
+<a href="/" style="color: #00f7ff;">← Back to main</a>
+{% endblock %}

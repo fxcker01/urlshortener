@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Main page{% endblock %}
+
+{% block content %}
+<h2>Shorten link</h2>
+
+{% if is_anon %}
+<div class="anon-warning" style="margin-bottom: 1rem; padding: 10px; border: 1px solid orange; color: orange;">
+    ⚠️ You're not logged in. Temporary links may be lost.
+    <a href="/login/">Log in</a> or <a href="/signup/">Sign up</a> to save them.
+</div>
+{% endif %}
+
+{% if short_url %}
+<div style="margin-bottom: 15px; padding: 10px; border: 1px solid #0f0; border-radius: 8px; color: #0f0; width: 580px;">
+    Your short link:
+    <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+</div>
+{% endif %}
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post" class="main-form">
+    {% csrf_token %}
+
+    <div>
+        {{ form.original_url.label_tag }}
+        {{ form.original_url }}
+        {% if form.original_url.errors %}
+            <div class="form-error">{{ form.original_url.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.short_code.label_tag }}
+        {{ form.short_code }}
+        {% if form.short_code.errors %}
+            <div class="form-error">{{ form.short_code.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="shorten-btn">Shorten link</button>
+</form>
+
+{% if user.is_authenticated %}
+    <h3>My links:</h3>
+    <ul class="link-list">
+        {% for link in links %}
+        <li style="margin-bottom: 1rem;">
+            <div style="margin-top: 10px;">
+                <strong>Original:</strong>
+                <a href="{{ link.original_url }}" target="_blank">{{ link.original_url|truncatechars:60 }}</a>
+            </div>
+            <div style="margin-top: 10px;">
+                <strong>Short:</strong>
+                <a href="/{{ link.short_code }}" target="_blank">{{ request.get_host }}/{{ link.short_code }}</a>
+                <form action="{% url 'delete-link' link.short_code %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">🗑 Delete</button>
+                </form>
+            </div>
+        </li>
+        {% empty %}
+        <li>No links yet.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

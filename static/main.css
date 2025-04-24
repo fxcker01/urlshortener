@@ -1,0 +1,293 @@
+body {
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+}
+
+h2, h3 {
+    color: #00f7ff;
+    margin-bottom: 1rem;
+}
+
+.site-header {
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header nav a {
+    color: #00f7ff;
+    margin-right: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.site-header nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.anon-warning {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid orange;
+    color: orange;
+    border-radius: 6px;
+    line-height: 1.4;
+    max-width: 580px;
+    text-align: left;
+}
+
+form {
+    max-width: 600px;
+}
+
+form input[type="text"],
+form input[type="url"],
+form input[type="email"],
+form input[type="password"],
+form button,
+form textarea {
+    width: 100%;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+form.auth-form {
+    margin: 0 auto;
+}
+
+form.auth-form input {
+    width: 582px;
+}
+
+.form-error {
+    color: red;
+    margin-top: 4px;
+    font-size: 0.9rem;
+}
+
+form.main-form,
+form.form-profile,
+form.form-auth {
+    max-width: 582px;
+}
+
+form.main-form button,
+form.form-profile button,
+form.auth-form button {
+    width: 600px;
+    display: block;
+    margin-top: 1rem;
+}
+
+form p {
+    max-width: 585px;
+    margin-bottom: 1rem;
+}
+
+form p input,
+form p select,
+form p textarea {
+    width: 600px;
+    display: block;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
+}
+
+
+
+button:hover {
+    background-color: #00d6e6;
+}
+
+a {
+    color: #80f5ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.link-list {
+    max-width: 600px;
+}
+
+.link-list li {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: border 0.2s;
+}
+
+.link-list li:hover {
+    border-color: #00f7ff;
+}
+
+input, select, textarea {
+    background-color: #1a1a1a;
+    border: 1px solid #555;
+    color: #eee;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+}
+
+button {
+    background-color: #00f7ff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    display: block;
+    width: 700px;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-btn {
+    background-color: transparent;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 4px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: #ff4d4d;
+    color: black;
+    border-color: #ff4d4d;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .site-header nav a {
+        margin: 0.5rem 0;
+    }
+
+    form, .link-list {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-group input,
+    .form-group button,
+    .delete-btn {
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .delete-btn {
+        margin-left: 0;
+        margin-top: 10px;
+        display: block;
+    }
+
+    li {
+        padding: 1rem 0.8rem;
+    }
+
+    .link-list li {
+        padding: 1rem;
+    }
+
+    .form-error {
+        font-size: 0.85rem;
+    }
+
+    h2, h3 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .site-header nav {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .site-header nav a {
+        font-size: 1.1rem;
+        margin-right: 0;
+    }
+
+    form.auth-form input,
+    form.main-form input,
+    form.form-profile input,
+    form.auth-form button,
+    form.main-form button,
+    form.form-profile button,
+    form p input,
+    form p select,
+    form p textarea,
+    button {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    form.auth-form,
+    form.main-form,
+    form.form-profile,
+    form.form-auth {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+#accept-cookies {
+    width: auto !important;
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    background-color: #00f7ff;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+
