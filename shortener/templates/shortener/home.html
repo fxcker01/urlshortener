@@ -12,8 +12,8 @@
 {% endif %}
 
 {% if short_url %}
-<div style="margin-bottom: 15px; padding: 10px; border: 1px solid #0f0; border-radius: 8px; color: #0f0; width: 580px;">
-    Your short link:
+<div class="short-url-box">
+    <div class="short-url-label">Your short link:</div>
     <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
 </div>
 {% endif %}
@@ -54,9 +54,12 @@
                 <a href="{{ link.original_url }}" target="_blank">{{ link.original_url|truncatechars:60 }}</a>
             </div>
             <div style="margin-top: 10px;">
-                <strong>Short:</strong>
+                <strong>Short:</strong><br>
                 <a href="/{{ link.short_code }}" target="_blank">{{ request.get_host }}/{{ link.short_code }}</a>
-                <form action="{% url 'delete-link' link.short_code %}" method="post" style="display:inline;">
+
+            </div>
+            <div style="margin-top: 10px;">
+                <form action="{% url 'delete-link' link.short_code %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="delete-btn">🗑 Delete</button>
                 </form>

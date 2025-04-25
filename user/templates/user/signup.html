@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Register page{% endblock %}
 {% block content %}
-<h2>Register page</h2>
+<h2 class="auth-page-title">Register page</h2>
 <form method="post" class="auth-form">
     {% csrf_token %}
 
@@ -37,7 +37,7 @@
         {% endif %}
     </div>
 
-    <button type="submit">Sign up</button>
+    <button type="submit" style="margin-top: 20px;">Sign up</button>
 </form>
 
 <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #aaa;">

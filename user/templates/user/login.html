@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Login page{% endblock %}
 {% block content %}
-<h2>Login page</h2>
+<h2 class="auth-page-title">Login page</h2>
 <form method="post" class="auth-form">
     {% csrf_token %}
 
@@ -25,7 +25,7 @@
         {% endif %}
     </div>
 
-    <button type="submit" class="auth-btn">Log in</button>
+    <button type="submit" class="auth-btn" style="margin-top: 20px;">Log in</button>
 </form>
 
 <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #aaa;">

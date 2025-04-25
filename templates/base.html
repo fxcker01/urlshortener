@@ -8,22 +8,107 @@
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body>
+<style>
+.site-header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.site-header .logo {
+  color: #00f7ff;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.site-header .burger {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #00f7ff;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .site-header .burger {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #00f7ff;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .site-header .nav-links {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    z-index: 10;
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+  }
+
+  #menu-toggle:checked + label + .nav-links {
+    display: flex;
+  }
+
+  .site-header .nav-links a {
+    display: block;
+    padding: 0.5rem 1rem;
+    min-width: 160px;
+    max-width: 240px;
+  }
+}
+
+
+</style>
+
 
 <header class="site-header">
-    <nav>
-        <a href="/">🏠 Home</a>
+  <div class="logo"><a href="{% url 'home' %}">URL Shortener</a></div>
+  <div class="header-top">
+    <input type="checkbox" id="menu-toggle" style="display: none;"/>
+    <label for="menu-toggle" class="burger">☰</label>
+    <nav class="nav-links" id="navLinks">
+      <a href="/">Home</a>
 
-        {% if user.is_authenticated %}
-            <a href="/profile/">👤 Profile</a>
-            <a href="/logout/">🚪 Log out</a>
-        {% else %}
-            <a href="/login/">🔐 Log in</a>
-            <a href="/signup/">📝 Sign up</a>
-        {% endif %}
+      {% if user.is_authenticated %}
+        <a href="/profile/">Profile</a>
+        <a href="/logout/">Log out</a>
+      {% else %}
+        <a href="/login/">Log in</a>
+        <a href="/signup/">Sign up</a>
+      {% endif %}
     </nav>
+  </div>
 </header>
-
-<hr>
 
 <main style="margin-top: 2rem;">
     {% block content %}{% endblock %}
@@ -45,7 +130,6 @@
   const cookieAcceptedAt = localStorage.getItem("cookiesAcceptedAt");
   const now = new Date().getTime();
 
-  // 30 хвилин = 1800000 мс
   if (!cookieAcceptedAt || now - cookieAcceptedAt > 1800000) {
     banner.style.display = "block";
   }
@@ -56,6 +140,7 @@
     banner.style.display = "none";
   });
 });
+
 </script>
 </body>
 </html>
